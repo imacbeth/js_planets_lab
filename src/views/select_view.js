@@ -9,10 +9,18 @@ SelectView.prototype.bindEvents = function () {
   //   const allPlanets = event.detail;
   // });
 
-  this.element.addEventListener('click', (event) => {
-      const selectedName = event.target.value;
-      PubSub.publish('SelectView:click', selectedName);
-  });
+  for(i=0; i<this.element.length; i++){
+    this.element[i].addEventListener('click', (event) => {
+        const selectedName = event.target.id;
+        PubSub.publish('SelectView:click', selectedName);
+    });
+  }
+
+  // this.element.addEventListener('click', (event) => {
+  //     const selectedName = event.target.id;
+  //     console.log(event.target.id);
+  //     PubSub.publish('SelectView:click', selectedName);
+  //});
 
 };
 
