@@ -4,18 +4,18 @@ const SelectView = function (element) {
   this.element = element;
 };
 
+SelectView.prototype.bindEvents = function () {
+  // PubSub.subscribe('Planets:all-planets-ready', (event) => {
+  //   const allPlanets = event.detail;
+  // });
 
-
-SelectView.prototype.populate = function (planetsData) {
-
-  planetsData.forEach((planet, index) => {
-    const option = document.createElement('option');
-    option.textContent = planet.name;
-    option.value = index;
-    this.element.appendChild(option);
-  })
+  this.element.addEventListener('click', (event) => {
+      const selectedName = event.target.value;
+      PubSub.publish('SelectView:click', selectedName);
+  });
 
 };
+
 
 
 module.exports = SelectView;
