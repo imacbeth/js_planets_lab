@@ -20,9 +20,18 @@ PlanetInfoView.prototype.display = function (planet) {
 this.container.innerHTML = '';
 
   Object.entries(planet).forEach(([key, value]) => {
+    if(key=='image'){
+      let imageToDisplay = document.createElement('img');
+      imageToDisplay.src = value;
+       this.container.appendChild(imageToDisplay);
+    }else{
     let planetToDisplay = document.createElement('p');
-     planetToDisplay.textContent = `${key} : ${value}`;
+    planetToDisplay.textContent = `${key} : ${value}`;
      this.container.appendChild(planetToDisplay);
+  }
+
+
+
   })
 
 };
